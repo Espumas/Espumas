@@ -1,167 +1,69 @@
---// ** ALIGN ** \\--
-local function Align(part0, part1)
-    local attachmentpos = Instance.new("AlignPosition", part0)
-    local attachmentori = Instance.new("AlignOrientation", part0)
-    local attachment1 = Instance.new("Attachment", part0)
-    local attachment2 = Instance.new("Attachment", part1)
-    attachmentpos.MaxForce = 5e9
-    attachmentpos.Responsiveness = 205
-    attachmentori.MaxTorque = 5e9
-    attachmentori.Responsiveness = 205
-    attachmentori.MaxAngularVelocity = math.huge
-    attachmentori.ReactionTorqueEnabled = false
-    attachmentori.PrimaryAxisOnly = false
-    attachment1.Position = Vector3.new(0, 0, 0)
-    attachment1.Orientation = Vector3.new(0, 0, 0)
-    attachmentpos.Attachment0 = part0.Attachment
-    attachmentori.Attachment0 = part0.Attachment
-    attachmentpos.Attachment1 = part1.Attachment
-    attachmentori.Attachment1 = part1.Attachment
-        local BodyForce = Instance.new("BodyForce",part0)
-    
-    game:GetService("RunService").Heartbeat:Connect(function()
-    	if part0.Name ~= "HumanoidRootPart" then
-        part0.Velocity = Vector3.new(29.99,0,0)
-        BodyForce.Force = Vector3.new(10,10,10)
+if syn then
+    local CoreGui = game:GetService("StarterGui")
+
+CoreGui:SetCore("SendNotification", {
+    Title = "Synapse X detected!";
+    Text = "Synapse X has been detected! Running new reanimation with R15 support and R6 support. Please wait a few moments...";
+    Duration = 5;
+})
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Tescalus/Pendulum-Hubs-Source/main/ReanimMain.lua"))()
+    else
+        local CoreGui = game:GetService("StarterGui")
+
+CoreGui:SetCore("SendNotification", {
+    Title = "Other executor detected!";
+    Text = "Unfortunately, because you are not using Synapse X, you cannot use the new reanimation. You will only have R6 support with fling. You can buy Synapse X at https://x.synapse.to";
+    Duration = 5;
+})
+        Bypass = "death"
+loadstring(game:GetObjects("rbxassetid://5325226148")[1].Source)()
+for i,v in next, game:GetService("Players").LocalPlayer.Character:GetDescendants() do
+if v:IsA("BasePart") and v.Name ~="HumanoidRootPart" then 
+game:GetService("RunService").Heartbeat:connect(function()
+v.Velocity = Vector3.new(0,30,0)
+wait(0.5)
+end)
+end
+end
+local p = game.Players.LocalPlayer
+local char = p.Character
+local mouse = p:GetMouse()
+local larm = char["Left Arm"]
+local rarm = char["Right Arm"]
+local lleg = char["Left Leg"]
+local rleg = char["Right Leg"]
+local hed = char.Head
+local torso = char.Torso
+local hum = char.Humanoid
+local cam = game.Workspace.CurrentCamera
+local root = char.HumanoidRootPart
+for i,v in pairs (char:GetChildren()) do
+	if v:IsA("Accessory") then
+		v.Handle.Massless = true
+		v.Handle.CustomPhysicalProperties = PhysicalProperties.new(0,0,0,0,0)
 	end
-    end)
 end
+hed.Massless = true
+hed.CustomPhysicalProperties = PhysicalProperties.new(0,0,0,0,0)
+torso.Massless = true
+torso.CustomPhysicalProperties = PhysicalProperties.new(0,0,0,0,0)
+rarm.Massless = true
+rarm.CustomPhysicalProperties = PhysicalProperties.new(0,0,0,0,0)
+larm.Massless = true
+larm.CustomPhysicalProperties = PhysicalProperties.new(0,0,0,0,0)
+lleg.Massless = true
+lleg.CustomPhysicalProperties = PhysicalProperties.new(0,0,0,0,0)
+rleg.Massless = true
+rleg.CustomPhysicalProperties = PhysicalProperties.new(0,0,0,0,0)
+root.Massless = true
+root.CustomPhysicalProperties = PhysicalProperties.new(0,0,0,0,0)
+warn("Netless Activated!")
+Bypass = "Death"
+plr = game.Players.LocalPlayer
+dead = false
+char = plr.Character
 
---// ** STARTUP ** \\--
-local Character = workspace[game.Players.LocalPlayer.Name]
-local Player = game.Players.LocalPlayer
-local Alt = game.Players.LocalPlayer.Character
-Character.Archivable = true
-Character.Humanoid.BreakJointsOnDeath = false
-local CharClone = Character:Clone()
-CharClone.Parent = Character
-CharClone.Name = "Reanimate"
--- // ** HIDE COPY ** \\ -- 
-for i, v in pairs(CharClone:GetDescendants()) do if v:IsA("BasePart") or v:IsA("Decal") then v.Transparency = 1 end end
--- // ** PDEATH SETUP ** \\ --
-local Dead = Instance.new("Model", workspace)
-local DeadHead = Instance.new("Part", Dead);DeadHead.Name = "Head"
-local DeadHumanoid = Instance.new("Humanoid", Dead)
-Player.Character = Dead
-_G.RNoClip = true;
-game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 0
-game.Players.LocalPlayer.Character.Humanoid.JumpPower = 0
-game.Players.LocalPlayer.Character.Humanoid.Name = "FalseHumanoid"
-local Clone = game.Players.LocalPlayer.Character:FindFirstChild("FalseHumanoid"):Clone()
-Clone.Parent = game.Players.LocalPlayer.Character
-Clone.Name = "Humanoid"
-game.Players.LocalPlayer.Character:FindFirstChild("FalseHumanoid"):Destroy()
-game.Players.LocalPlayer.Character.Humanoid.Health = 0
-game.Players.LocalPlayer.Character = workspace[game:GetService("Players").LocalPlayer.Name]
---// ** NOCLIP ** \\ --
-local Collision
-function NoCollisions()
-    if _G.RNoClip == false then
-        Collision:Disconnect()
-        return
-    end
-    for i, v in pairs(Character:GetChildren()) do
-        if v:IsA("BasePart") then
-            v.CanCollide = false
-        end
-    end
-end
---// ** FIX TORSO FLYING AWAY ** \\--
-game:GetService("RunService").Heartbeat:Connect(function()
-    if Character:FindFirstChild("Reanimate") then
-    Character:FindFirstChild("Torso").CFrame = CharClone:FindFirstChild("Torso").CFrame
-    end
-end)
 
-workspace.Camera.CameraSubject = CharClone.Humanoid
-
-Collision = game:GetService("RunService").Stepped:Connect(NoCollisions)
-wait(5.65)
---// ** FINISH ** \\ --
-Player.Character.Humanoid.Health = 0
-CharClone.Humanoid.BreakJointsOnDeath = false
-Dead:Destroy()
-
---// ** ALIGN/ATTACHMENT DESTROYING ** \\--
-Character.Torso["Left Shoulder"]:Destroy()
-Character.Torso["Right Shoulder"]:Destroy()
-Character.Torso["Left Hip"]:Destroy()
-Character.Torso["Right Hip"]:Destroy()
-Character.HumanoidRootPart["RootJoint"]:Destroy()
-
-Align(Character.Torso, CharClone.Torso)
-Align(Character.Head, CharClone.Head)
-Align(Character["Right Arm"], CharClone["Right Arm"])
-Align(Character["Left Arm"], CharClone["Left Arm"])
-Align(Character["Right Leg"], CharClone["Right Leg"])
-Align(Character["Left Leg"], CharClone["Left Leg"])
-Align(Character.HumanoidRootPart, CharClone.HumanoidRootPart)
-_G.Reanimated = true;_G.PermamentDeath = true;
-for i, v in pairs(Character:GetChildren()) do
-    if v:IsA("Accessory") then
-    	v.Handle.AccessoryWeld:Remove()
-        Align(v.Handle, CharClone[v.Name].Handle)
-    end
-end
---// ** JUMPING AND MOVEMENT ** \\--
-local Humanoid = CharClone:FindFirstChild("Humanoid")
-game:GetService("UserInputService").JumpRequest:connect(
-    function()
-        if Humanoid.FloorMaterial ~= Enum.Material.Air then
-            Humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
-            Humanoid.Sit = false
-        end
-    end
-)
-game:GetService("RunService").RenderStepped:Connect(
-    function()
-        Humanoid:Move(Character.Humanoid.MoveDirection, false)
-        local AnimationTracks = Character.Humanoid:GetPlayingAnimationTracks()
-        for n, Anims in pairs(AnimationTracks) do
-            Anims:Stop()
-        end
-    end
-)
---// ** ENDING ** \\--
-local ResetBind = Instance.new("BindableEvent")ResetBind.Event:connect(function()
-        game:GetService("StarterGui"):SetCore("ResetButtonCallback", true)
-        Player.Character = CharClone
-        CharClone:Destroy()
-        Player.Character = Character
-        _G.Reanimated = false;_G.PermamentDeath = false;_G.RNoClip = false
-end)
-game:GetService("StarterGui"):SetCore("ResetButtonCallback", ResetBind)
---FLING
-local HatName = "HumanoidRootPart" -- hat name
-local Char = game:GetService("Players").LocalPlayer.Character or game:GetService("Players").LocalPlayer.CharacterAdded:wait()
-HatName = Char:FindFirstChild(HatName)
-
---workspace.Camera.CameraSubject = HatName.Handle
---HatName.Parent = workspace
-wait(0.1)
---coroutine.wrap(function()
-    local bp = Instance.new("BodyPosition",HatName)
-    bp.MaxForce = Vector3.new(math.huge,math.huge,math.huge)
-    bp.P = 10000
-
-    bp.D = 125
-
---bp.MaxForce = Vector3.new(math.huge,math.huge,math.huge)
-    bp.Position = game.Players.LocalPlayer:GetMouse().Hit.p 
-    local bt = Instance.new("BodyThrust",HatName)
-    bt.Force = Vector3.new(5000,5000,5000)
-    bt.Location = Vector3.new(10,5,-10)
-    local hatpos = game.Players.LocalPlayer:GetMouse().Hit.p
-    --HatName.Handle.CFrame = CFrame.new(hatpos)
-    while true do
-        for _=1,2 do
-            game:GetService("RunService").RenderStepped:wait()
-        end
-        if not HatName or HatName.Parent ~= workspace then print("Sad"); break end
-        HatName.CanCollide = false
-       -- bp.Position = game.Players.LocalPlayer:GetMouse().Hit.p
-    end
---end)()
 
 bullet = workspace[plr.Name]["HumanoidRootPart"]
 bullet.Transparency = 1
@@ -247,7 +149,7 @@ end
 until attackingwithhrp == false
 end)
 end
-game:GetService("Players").LocalPlayer.Character["Meshes/KataRougeAccessory"].Name = "gamer2"
+game:GetService("Players").LocalPlayer.Character["MeshPartAccessory"].Name = "gamer2"
 
 
 backgroundcolortitle = Color3.fromHSV(0, 0, 0.3)
