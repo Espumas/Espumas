@@ -3,7 +3,7 @@ if syn then
 
 CoreGui:SetCore("SendNotification", {
     Title = "Synapse X detected!";
-    Text = "Synapse X has been detected! Running new reanimation with R15 support and R6 support. Please wait a few moments...";
+    Text = "Synapse X has been detected, running new reanimate with R15 support.";
     Duration = 5;
 })
     loadstring(game:HttpGet("https://raw.githubusercontent.com/Tescalus/Pendulum-Hubs-Source/main/ReanimMain.lua"))()
@@ -12,7 +12,7 @@ CoreGui:SetCore("SendNotification", {
 
 CoreGui:SetCore("SendNotification", {
     Title = "Other executor detected!";
-    Text = "Unfortunately, because you are not using Synapse X, you cannot use the new reanimation. You will only have R6 support with fling. You can buy Synapse X at https://x.synapse.to";
+    Text = "Rip but, Synapse X has not been detected, you can buy it at https://x.synapse.to or contact support at ...Addinge email soon... RIP";
     Duration = 5;
 })
         Bypass = "death"
