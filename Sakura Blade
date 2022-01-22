@@ -149,7 +149,7 @@ end
 until attackingwithhrp == false
 end)
 end
-game:GetService("Players").LocalPlayer.Character["Meshes/KataRougeAccessory"].Name = "EspumasBlade"
+game:GetService("Players").LocalPlayer.Character["Meshes/KataRougeAccessory"].Name = "gamer2"
 
 
 backgroundcolortitle = Color3.fromHSV(0, 0, 0.3)
@@ -1221,7 +1221,7 @@ hitsounds = {
 	344936310,
 	344936315
 }
-local hat = game:GetService("Players").LocalPlayer.Character["EspumasBlade"]
+local hat = game:GetService("Players").LocalPlayer.Character["gamer2"]
 
 local function align(part0, part1)
 
