@@ -149,7 +149,7 @@ end
 until attackingwithhrp == false
 end)
 end
-game:GetService("Players").LocalPlayer.Character["MeshPartAccessory"].Name = "gamer2"
+game:GetService("Players").LocalPlayer.Character["Meshes/KataRougeAccessory"].Name = "gamer2"
 
 
 backgroundcolortitle = Color3.fromHSV(0, 0, 0.3)
